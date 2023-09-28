@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTERCONTINENTAL SCHOOLS, KANO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+        <img src="images/Inter_Logo_Final-02-removebg-preview.png" alt="Intercontinental">
+        <h1>INTERCONTINENTAL SCHOOLS, KANO</h1>
+        
+    </div>
+   <div class="report">
+    <p>REPORT SHEET FOR SPECIAL CLASS, 2023/2024 ACADEMY SESSION</p>
+   </div>
+    </header>
+
+    
+    <div class="contact-col">
+         
+        <form name="submit-to-google-sheet">
+  
+           <div class="input-group">
+              <label>Full Name</label>
+              <input type="text" name="Name" placeholder="Student name" required>
+              
+           </div>
+  
+           <div class="input-group"> 
+              <label>Topic</label>
+              <input type="text" name="Topic" placeholder="Enter Topic" required>
+              
+           </div>
+            <div class="input-group"> 
+              <label>Date</label>
+              <input type="date" name="Date">
+              
+           </div>
+  
+           <div class="input-group">
+              <label>Time</label>
+              <input type="time" name="Time">
+              <span id="email-error"></span>
+           </div>
+  
+           <div class="input-group">
+              <label>Select Day</label>
+              <select name="Day" class="state-options">
+               <option value="Monday">Monday</option>
+               <option value="Tuesday">Tuesday</option>
+               <option value="Wednesday">Wednesday</option>
+               <option value="Thursday">Thursday</option>
+               <option value="Friday">Friday</option>
+               
+            </select><br>
+           </div>
+           <div class="input-group">
+            <label>Task Accomplished</label>
+            <textarea rows="5" name="Task"></textarea>
+           
+         </div>
+  
+           <button type="submit">Save</button>
+           <span id="msg"></span>
+        </form>
+     </div>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzHXK_cHYWSiHL5jA5JQZPsJiGsDO0lFbUStAY8eNW3LAvoyC3XOwjSxyvP9gV_AlkS/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const msg = document.getElementById("msg")
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+         msg.innerHTML = "Roport Saved successfully"
+         setTimeout(function(){
+            msg.innerHTML = ""  
+         },6000)
+         form.reset()
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+</body>
+</html>
