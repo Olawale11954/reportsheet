@@ -20,10 +20,10 @@ header{
 }
 .container img{
     width: 80px;
-   margin: 30px;
+   margin: 15px;
 }
 .container h1{
-    margin: 30px;
+    margin: 10px;
     font-size: 40px;
     font-weight: 600;
     text-align: center;
